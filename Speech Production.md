@@ -34,8 +34,7 @@
 
 前面除了声道还提到了**振动的声带**，**湍流噪声** 这两种激励，所以将他们和声道模型整合起来形成系统模型，在生成响音(sonorant)时，激励由冲击序列主导，生成阻断音(obstruent)时，激励由白噪声主导，这两种激励是可以同事产生的，再通过声道塑形星成最终的波形，数学描述如下：
 
-<img src="https://latex.codecogs.com/gif.latex?S(z)=\left[F_{0}(z)&space;G(z)&plus;X(z)&space;N(z)\right]&space;V(z)&space;L(z)" title="S(z)=\left[F_{0}(z) G(z)+X(z) N(z)\right] V(z) L(z)" />
-
+<a href="https://www.codecogs.com/eqnedit.php?latex=S(z)=\left[F_{0}(z)&space;G(z)&plus;X(z)&space;N(z)\right]&space;V(z)&space;L(z)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?S(z)=\left[F_{0}(z)&space;G(z)&plus;X(z)&space;N(z)\right]&space;V(z)&space;L(z)" title="S(z)=\left[F_{0}(z) G(z)+X(z) N(z)\right] V(z) L(z)" /></a>
 
 F(z)表示基础频率脉冲序列，G(z)是单个声门脉冲的波形，X(z)是白噪声，N(z)表示一个滤波器，V(z)和L(z)分别是声道模型和辐射模型的传递函数。
 
@@ -45,6 +44,6 @@ F(z)表示基础频率脉冲序列，G(z)是单个声门脉冲的波形，X(z)�
 
 将声道模型和唇辐射模型整合在一起，都包含在这个线性预测器上，这两种信号叠加就模拟了气流在人体产生声音时的两种情况。数学描述如下：
 
-<img src="https://latex.codecogs.com/gif.latex?S(z)=\left[F_{0}(z)&plus;X(z)\right]&space;H(z)=\left[F_{0}(z)&plus;X(z)\right]&space;A^{-1}(z)" title="S(z)=\left[F_{0}(z)+X(z)\right] H(z)=\left[F_{0}(z)+X(z)\right] A^{-1}(z)" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=S(z)=\left[F_{0}(z)&plus;X(z)\right]&space;H(z)=\left[F_{0}(z)&plus;X(z)\right]&space;A^{-1}(z)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?S(z)=\left[F_{0}(z)&plus;X(z)\right]&space;H(z)=\left[F_{0}(z)&plus;X(z)\right]&space;A^{-1}(z)" title="S(z)=\left[F_{0}(z)+X(z)\right] H(z)=\left[F_{0}(z)+X(z)\right] A^{-1}(z)" /></a>
 
 这个模型可以被看作是解码端的解码器，所以在编码端需要提取并传递的信息就是能确定这个系统中各个部件状态的参数。
