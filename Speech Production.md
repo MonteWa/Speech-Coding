@@ -13,13 +13,13 @@
 下表展示了不同种类的语音对应的产生机理:
 
 <div align="center">
-<img src="graph/moa.jpg" width=500>
+<img src="graph/moa.JPG" width=500>
 </div>
 
 总的来说，声道形状是语音信号的一个重要特征，因为不同的声道形状就能产生不同的共振，而共振峰就是用来描述这个特征的，一般前两个共振峰最重要，这个两个共振峰就足够确定一个元音。如下图所示：
 
 <div align="center">
-<img src="graph/vowelformants.jpg" width=500>
+<img src="graph/vowelformants.JPG" width=500>
 </div>
 
 ### 声道建模
