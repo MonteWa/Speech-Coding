@@ -27,7 +27,7 @@
 根据声音产生的生理基础，我们可以对声道进行建模，这样只用少量参数就能够描述语音信号。一般使用管道(tube model)模型来对声道建模：
 
 <div align="center">
-<img src="Graph/tubemodel.jpg" width=300>
+<img src="Graph/tubemodel.JPG" width=300>
 </div>
 
 而管道模型的一个好处是它可以等效成一个线性预测器，(on hold)
@@ -39,7 +39,7 @@
 F(z)表示基础频率脉冲序列，G(z)是单个声门脉冲的波形，X(z)是白噪声，N(z)表示一个滤波器，V(z)和L(z)分别是声道模型和辐射模型的传递函数。
 
 <div align="center">
-<img src="Graph/systemmodel.jpg" width=300>
+<img src="Graph/systemmodel.JPG" width=300>
 </div>
 
 将声道模型和唇辐射模型整合在一起，都包含在这个线性预测器上，这两种信号叠加就模拟了气流在人体产生声音时的两种情况。数学描述如下：
