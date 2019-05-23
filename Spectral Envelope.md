@@ -54,11 +54,11 @@ ak为LPC系数，sigman为残差项，我们可以将a0定义为1，将残差项
 
 ### LPC参数的量化
 
-当获得LPC的参数之后，我们需要将其量化再传输，但是LPC的参数对误差非常敏感，很少的误差就会造成结果的偏差很大，如果为了提高量化精度，就需要很多的bit来传输LPC参数。而最佳传输参数的方式是在Line Spectral Frequency域来量化参数，公式如下：
+当获得LPC的参数之后，我们需要将其量化再传输，但是LPC的参数对误差非常敏感，很少的误差就会造成结果的偏差很大，如果为了提高量化精度，就需要很多的bit来传输LPC参数。而最佳传输参数的方式是在Line Spectral Frequency域来量化参数，公式如下(K一般为1)：
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\left\{\begin{array}{l}{P(z)=A(z)&plus;z^{-M-K}&space;A\left(z^{-1}\right)}&space;\\&space;{Q(z)=A(z)-z^{-M-K}&space;A\left(z^{-1}\right)}\end{array}\right." target="_blank"><img src="https://latex.codecogs.com/gif.latex?\left\{\begin{array}{l}{P(z)=A(z)&plus;z^{-M-K}&space;A\left(z^{-1}\right)}&space;\\&space;{Q(z)=A(z)-z^{-M-K}&space;A\left(z^{-1}\right)}\end{array}\right." title="\left\{\begin{array}{l}{P(z)=A(z)+z^{-M-K} A\left(z^{-1}\right)} \\ {Q(z)=A(z)-z^{-M-K} A\left(z^{-1}\right)}\end{array}\right." /></a>
 
-P(z)和Q(z)的极点交错的出现在单位圆上，小的误差不会对结果造成很大的影响。
+P(z)和Q(z)的极点交错的出现在单位圆上，小的误差不会对结果造成很大的影响。A(z)=(P(z)+Q(z))/2
 <div align="center">
 <img src="Graph/lsf_z.jpg" width=400>
 </div>
