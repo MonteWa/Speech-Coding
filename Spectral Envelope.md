@@ -66,3 +66,9 @@ P(z)和Q(z)的极点交错的出现在单位圆上，小的误差不会对结果
 <div align="center">
 <img src="Graph/lsf_z2.jpg" width=500>
 </div>
+
+### 提取包络的方法
+1. Cepstrum的方法：保留Cepstrum参数的前N个和后N个，做傅里叶变换，就可以得到频谱包络。
+2. LPC方法：对LPC分析得到的参数做傅里叶变换，就得到了频谱包络。
+
+具体操作见Demo。
