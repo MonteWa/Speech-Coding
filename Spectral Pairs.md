@@ -1,5 +1,7 @@
 ## Line Spectral Pairs
 
+参考：http://www.lintech.org/webpapers/lsp_paper.pdf
+
 ### 什么是LSP(Line Spectral Pairs)？
 
 LSP可以用来可以用来代表Line Prediction的参数，由于Line Prediction参数的稳定性差，在信号传输过程中，少量的噪声就可能导致恢复出来的信号包络与原始信号有较大的误差。同时它也与频谱特性相关，可以用来分析语音信号.
@@ -22,17 +24,13 @@ LSP就是一对单位圆上的全极点滤波器，这两个滤波器的幅频�
 
 LSP可以直接从LP参数中获得。p阶分析的表达如下：
 
-$$
-A_{p}(z)=\frac{P(z)+Q(z)}{2}
-$$
+<a href="https://www.codecogs.com/eqnedit.php?latex=A_{p}(z)=1&plus;a_{1}&space;z^{-1}&plus;a_{2}&space;z^{-2}&plus;\ldots&plus;a_{p}&space;z^{-p}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?A_{p}(z)=1&plus;a_{1}&space;z^{-1}&plus;a_{2}&space;z^{-2}&plus;\ldots&plus;a_{p}&space;z^{-p}" title="A_{p}(z)=1+a_{1} z^{-1}+a_{2} z^{-2}+\ldots+a_{p} z^{-p}" /></a>
 
 P，Q两组多项式表示声道状态为全关和全开的情况，所有实际情况下的A可以表示为这两组多项式的线性组合：
 
-todo： 公式 A = 1/2（p+q）
+<a href="https://www.codecogs.com/eqnedit.php?latex=A_{p}(z)=\frac{P(z)&plus;Q(z)}{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?A_{p}(z)=\frac{P(z)&plus;Q(z)}{2}" title="A_{p}(z)=\frac{P(z)+Q(z)}{2}" /></a>
 
-todo: 公式 P = A - term
-
-todo: 公式 Q = A + term
+<a href="https://www.codecogs.com/eqnedit.php?latex=\begin{aligned}&space;P(z)&space;&=A_{p}(z)-z^{-(p&plus;1)}&space;A_{p}\left(z^{-1}\right)&space;\\&space;Q(z)&space;&=A_{p}(z)&plus;z^{-(p&plus;1)}&space;A_{p}\left(z^{-1}\right)&space;\end{aligned}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;P(z)&space;&=A_{p}(z)-z^{-(p&plus;1)}&space;A_{p}\left(z^{-1}\right)&space;\\&space;Q(z)&space;&=A_{p}(z)&plus;z^{-(p&plus;1)}&space;A_{p}\left(z^{-1}\right)&space;\end{aligned}" title="\begin{aligned} P(z) &=A_{p}(z)-z^{-(p+1)} A_{p}\left(z^{-1}\right) \\ Q(z) &=A_{p}(z)+z^{-(p+1)} A_{p}\left(z^{-1}\right) \end{aligned}" /></a>
 
 P，Q多项式的根就是LSF。而他们的复数根都落在Z域的单位圆上。可以用估计的方法近似获得。
 
@@ -54,13 +52,17 @@ LSP可以被用在语音编码当中，在一个通用的CELP编码器的编码�
 
 LSP代替LP参数的优点是具有更加的稳定性，可以使用较少的bit来量化，从下表中可以看出当使用的比特数少时，量化LSP能获得较高的信噪比；缺点是会引入更多的计算复杂度。
 
-todo ： table1
-
 对不同位置的LSF进行分组量化是一种更好的选择，例如对于一个10阶的系统，可以采用（2，3，3，2）或者（3，3，4）的分组方式，不同的Line可以用不同长度的bit来量化，这样做的原因是:
 1. 不同位置的Line有着不同的重要性，重要性较低的LSF不需要高精度的量化，如低阶的LSF一般代表前几个共振峰，重要性更高，
 2. 也有不同的统计分布，例如1，10这样位置上的Line拥有更加集中的分布，也就是说相比5，6Line，用较少的bit就可以更精准的表示。
 
-todo ： table2
+<div align="center">
+<img src="Graph/lsp_table1.jpg" width=500>
+</div>
+
+<div align="center">
+<img src="Graph/lsp_table2.jpg" width=500>
+</div>
 
 所以采用非均一划分的方式去量化LSFs更加高效；甚至可以采用动态选择量化方法的方式进一步提高效率，例如指定两套量化方案，对不同帧采用更合适的量化方案，但这样需要一个额外的比特位来表示采用了哪种方案；引入Vector Quantization可以进一步压缩使用的bit数。
 
